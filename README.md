@@ -4,6 +4,10 @@ Personal Career Development Plan web application for **ProtAIomics**, Grant Agre
 
 This is an independent copy of the EvoMG-DN PCDP v4 tool. The ten steps, question structure, Word/JSON package, six-month review calculator and optional email reminders are retained. Branding and project identifiers have been changed for ProtAIomics.
 
+## ProtAIomics colors
+
+The site uses the official ProtAIomics logo palette: purple, green, light lavender and mint. The **only** appearance file changed in this revision is `public/styles.css`. All PCDP questions, exports and reminder logic remain unchanged. If you already uploaded the previous version to GitHub, you only need to replace `public/styles.css` and commit the change. Cloudflare Pages should then deploy the new stylesheet automatically.
+
 ## 1. What to upload to GitHub
 
 In your new **PCDP-ProtAIomics** repository, upload the **contents** of this folder, not the ZIP file itself. The root of the GitHub repository should contain:

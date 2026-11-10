@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>ProtAIomics Personal Career Development Plan</title>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar">
+<div class="brand-lockup">
+<img alt="Doctoral Network logo" class="network-logo" id="networkLogo" src="assets/protaiomics-base.png"/>
+<div>
+<div class="eyebrow">ProtAIomics · MSCA Doctoral Network</div>
+<h1>Personal Career Development Plan</h1>
+</div>
+</div>
+<div class="privacy-pill">PCDP answers stay in your browser</div>
+</header>
+<main class="card">
+<div aria-label="Form progress" class="progress-wrap">
+<div class="progress-meta"><span id="stepLabel">Step 1 of 10</span><span id="stepTitle">Start</span></div>
+<div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+</div>
+<form id="pcdpForm" novalidate="">
+<section class="step active" data-step="0" data-title="Candidate information">
+<h2>Doctoral candidate and doctoral programme</h2>
+<p class="lead">Choose the type of PCDP review and confirm your doctoral project and university information.</p>
+<fieldset class="choice-grid" data-fieldset="mode">
+<legend>What would you like to do?</legend>
+<label class="choice-card"><input name="mode" required="" type="radio" value="Initial"/> <span><strong>Create my first PCDP</strong><small>Initial career and development plan</small></span></label>
+<label class="choice-card"><input name="mode" required="" type="radio" value="Update"/> <span><strong>Update my PCDP</strong><small>Six-month review of progress and next priorities</small></span></label>
+</fieldset>
+<div class="optional-box hidden" id="updateImport">
+<label for="backupFile"><strong>Recommended for updates:</strong> import the JSON backup from your previous PCDP. This lets the app show your previous priorities without copying old answers into the new review.</label>
+<input accept="application/json,.json" id="backupFile" type="file"/>
+<div class="message" id="backupMessage" role="status"></div>
+<div class="previous-snapshot hidden" id="previousSnapshot"></div>
+</div>
+<h3 class="identity-heading">Doctoral Candidate and project information</h3>
+<p class="lead compact-lead">Enter the information exactly as used in ProtAIomics records.</p>
+<div class="field">
+<label for="candidateName">Full name</label>
+<input autocomplete="name" data-field="candidate_name" id="candidateName" required="" type="text"/>
+</div>
+<div class="field">
+<label for="projectTitle">Individual doctoral project title</label>
+<input data-field="project_title" id="projectTitle" required="" type="text"/>
+</div>
+<div class="field">
+<label for="hostInstitution">Host institution</label>
+<input data-field="host_institution" id="hostInstitution" required="" type="text"/>
+</div>
+<div class="field-grid two">
+<div class="field">
+<label for="mainSupervisor">Main supervisor / PI</label>
+<input data-field="main_supervisor" id="mainSupervisor" required="" type="text"/>
+</div>
+<div class="field">
+<label for="coSupervisor">Co-supervisor(s) within the ProtAIomics network</label>
+<input data-field="co_supervisor" id="coSupervisor" required="" type="text"/>
+</div>
+</div>
+<div class="programme-section">
+<h3>University doctoral programme information</h3>
+<p class="lead" id="doctoralProgrammeLead">Provide your current doctoral programme information.</p>
+<div class="field"><label>University in which you are enrolled for your doctoral studies</label><input data-field="university_name" required="" type="text"/></div>
+<div class="field"><label>Name of the doctoral programme</label><input data-field="doctoral_programme" required="" type="text"/></div>
+<div class="field-grid two">
+<div class="field"><label>Date of enrolment</label><input data-field="enrollment_date" type="date"/></div>
+<div class="field"><label>If not yet enrolled, expected date of official enrolment</label><input data-field="expected_enrollment_date" type="date"/></div>
+</div>
+<div class="field-grid two">
+<div class="field"><label>Start date of employment contract <span class="required-symbol">*</span></label><input data-field="contract_start_date" type="date" required/></div>
+<div class="field"><label>End date of employment contract <span class="required-symbol">*</span></label><input data-field="contract_end_date" type="date" required/></div>
+</div>
+</div>
+<label class="confirm-check identity-confirm"><input id="candidateConfirmed" type="checkbox"/> I confirm that my personal and project information above is correct.</label>
+<div class="declaration-box"><h3>University documentation in SharePoint</h3>
+<p class="field-hint">Please make sure your university documents are uploaded to the designated ProtAIomics SharePoint folder. This declaration must be confirmed at each review.</p>
+<label class="confirm-check"><input id="sharePointConfirmed" type="checkbox" required/> I confirm that I have uploaded all relevant university documents to my designated SharePoint folder, including my PhD enrolment confirmation, Thesis Advisory Committee (TAC) documents (where applicable), and any other relevant university documentation.</label></div>
+</section>
+<section class="step" data-step="1" data-title="Review details">
+<h2>PCDP review details</h2>
+<p class="lead">The next review date is calculated automatically six months after the date of this PCDP review.</p>
+<div class="field-grid three">
+<div class="field">
+<label for="reviewDate">Date of PCDP review</label>
+<input data-field="pcdp_review_date" id="reviewDate" required="" type="date"/>
+</div>
+<div class="field">
+<label for="cycle">PCDP cycle</label>
+<select data-field="pcdp_cycle" id="cycle" required="">
+<option value="">Select</option>
+<option>Initial</option>
+<option>6-month</option>
+<option>12-month</option>
+<option>18-month</option>
+<option>24-month</option>
+<option>30-month</option>
+<option>36-month</option>
+</select>
+</div>
+<div class="field">
+<label for="nextReview">Next PCDP review</label>
+<input aria-describedby="nextReviewHelp" data-field="next_review" id="nextReview" type="date"/>
+</div>
+</div>
+<p aria-live="polite" class="date-calculation-note" id="nextReviewHelp" role="status">Based on six months and the official public holiday calendar for Barcelona (2026–2027). You may adjust the date if your host institution follows a different calendar.</p>
+<div class="reminder-widget" data-network="ProtAIomics" id="reminderWidget">
+<h3>Email reminders</h3>
+<p class="reminder-description">You can receive a reminder before your next PCDP review. Enter your email address below if you wish to activate this service. <strong>You can also leave this blank and continue your PCDP.</strong></p>
+<div class="reminder-fields" id="reminderFields">
+<div class="field-grid two">
+<div class="field">
+<label for="reminderEmail">Email address</label>
+<input autocomplete="email" id="reminderEmail" maxlength="254" placeholder="name@institution.eu" type="email"/>
+</div>
+<div class="field">
+<label for="reminderFrequency">Reminder frequency</label>
+<select id="reminderFrequency">
+<option selected="" value="standard">Standard: 30, 15, 5 and 1 day before</option>
+<option value="intensive">Intensive: 30, 15, 5, 3, 2 and 1 day before</option>
+</select>
+</div>
+</div>
+<label class="reminder-consent">
+<input id="reminderConsent" type="checkbox"/>
+        I agree to receive PCDP reminder emails. I understand that my email address, next review date and reminder preferences will be used for this purpose. I can stop reminders at any time.
+      </label>
+<div class="reminder-actions">
+<button class="button secondary" id="activateReminders" type="button">Activate email reminders</button>
+<span class="reminder-helper">A verification email is required. You can stop reminders using the link in any email.</span>
+</div>
+<div aria-live="polite" class="message reminder-message" id="reminderMessage" role="status"></div>
+</div>
+</div>
+</section>
+
+<section class="step" data-step="2" data-title="Research plan">
+<h2>Research plan</h2>
+<p class="lead" id="researchPlanLead">Describe your research starting point, your objectives and the main priorities for the next six months.</p>
+<div class="field">
+<label for="researchOverview" id="researchOverviewLabel">Research project overview</label>
+<p class="field-hint" id="researchOverviewHelp">Briefly describe the scientific question, research context and overall approach of your doctoral project. Focus on the project itself, not a list of expected accomplishments.</p>
+<textarea aria-describedby="researchOverviewHelp" data-field="research_overview" id="researchOverview" maxlength="3500" placeholder="Brief overview of the doctoral research project" rows="6"></textarea>
+</div>
+<div class="field">
+<label for="researchProgress" id="researchProgressLabel">Short-term research objectives and plan</label>
+<p class="field-hint" id="researchProgressHelp">Describe your main research objectives for the next six months and the specific experiments, analyses or actions you plan to undertake. Include the expected milestones or outputs.</p>
+<textarea aria-describedby="researchProgressHelp" data-field="research_progress" id="researchProgress" maxlength="11000" placeholder="Objectives, key actions, methods and expected milestones for the next six months" rows="9"></textarea>
+</div>
+<div class="field">
+<label for="researchDifficulties" id="difficultiesLabel">Significant difficulties and risks</label>
+<p class="field-hint" id="difficultiesHelp">For your first PCDP, identify possible difficulties or risks that you anticipate, for example with methods, data, samples, resources or timing, and how you might address them.</p>
+<textarea aria-describedby="difficultiesHelp" data-field="difficulties" id="researchDifficulties" maxlength="2500" placeholder="Potential risks and possible ways to address them" rows="4"></textarea>
+</div>
+<div class="field">
+<label for="researchChanges" id="researchChangesLabel">Changes in research direction</label>
+<p class="field-hint" id="researchChangesHelp">For your first PCDP, mention only changes already identified compared with the original doctoral project plan. If none, you can write “No changes identified at this stage”.</p>
+<textarea aria-describedby="researchChangesHelp" data-field="research_changes" id="researchChanges" maxlength="2500" placeholder="Changes to the original plan, if any, and their reasons" rows="4"></textarea>
+</div>
+</section>
+<section class="step" data-step="3" data-title="Research skills">
+<h2>Research skills development</h2>
+<p class="lead" id="researchSkillsLead">Choose up to three research skills that are most relevant to your current stage.</p>
+<datalist id="researchSkillSuggestions">
+<option value="Experimental design"></option>
+<option value="Laboratory techniques and protocols"></option>
+<option value="Instrumentation / specialised experimental platforms"></option>
+<option value="Programming and scripting"></option>
+<option value="Statistics"></option>
+<option value="Data analysis"></option>
+<option value="Scientific plotting and visualisation"></option>
+<option value="Literature review and critical appraisal"></option>
+<option value="Other"></option>
+</datalist>
+<section id="previousResearchSection" class="subsection previous-research-section hidden">
+<h3>Follow-up on research skills from your previous PCDP</h3>
+<p class="field-hint">Review the learning priorities you selected last time. Describe what you have done, what you have learned and any progress or difficulties. These are <strong>not</strong> automatically selected as priorities for the next six months.</p>
+<div id="previousResearchSkillsContainer"></div>
+</section>
+<section class="subsection new-research-section">
+<h3>Research-skill priorities for the next six months</h3>
+<p class="field-hint">Start a new plan here. You can select completely different skills, or choose to continue developing a skill from your previous PCDP. Select between 1 and 3 learning priorities and describe the actions you will take.</p>
+<div id="researchSkillsContainer"></div>
+<button class="button secondary" id="addResearchSkill" type="button">+ Add research skill</button>
+</section>
+
+</section><section class="step" data-step="4" data-title="Research quality"><div class="subsection" id="goodResearchPracticeSection">
+<h2>Research quality and good research practice</h2>
+<p class="lead" id="goodPracticeLead">These are expected research practices rather than optional development priorities. Select the measures you already use and briefly identify anything that still needs attention.</p>
+<div class="field-grid two">
+<div class="field"><label>Reproducibility: are appropriate measures currently in place?</label><select data-field="reproducibility_status" required=""><option value="">Select</option><option>Yes</option><option>Partly</option><option>Not yet / still being developed</option><option>Not applicable</option></select></div>
+<div class="field"><label>Research data management: are appropriate measures currently in place?</label><select data-field="data_management_status" required=""><option value="">Select</option><option>Yes</option><option>Partly</option><option>Not yet / still being developed</option><option>Not applicable</option></select></div>
+</div>
+<div class="field"><label>Reproducibility measures currently used <span class="muted">Select all that apply.</span></label>
+<div class="checkbox-grid compact-options" id="reproducibilityMeasures">
+<label><input type="checkbox" value="Version control"/> Version control</label><label><input type="checkbox" value="Documented protocols"/> Documented protocols</label><label><input type="checkbox" value="Reproducible analysis workflows"/> Reproducible analysis workflows</label><label><input type="checkbox" value="Code / workflow documentation"/> Code / workflow documentation</label><label><input type="checkbox" value="Validation / replication measures"/> Validation / replication measures</label><label><input type="checkbox" value="Electronic lab notebook / structured records"/> Electronic lab notebook / structured records</label><label><input class="other-trigger" data-other-target="reproducibilityOtherWrap" type="checkbox" value="Other"/> Other</label>
+</div><div class="field inline-other hidden" id="reproducibilityOtherWrap"><label>Please specify</label><input data-field="reproducibility_other" type="text"/></div>
+</div>
+<div class="field"><label id="reproducibilityLabel">Anything you would like to improve or strengthen in relation to reproducibility?</label><textarea data-field="reproducibility_practice" maxlength="2500" placeholder="Optional: describe what still needs attention or what you plan to improve." rows="4"></textarea></div>
+<div class="field"><label>Research data management measures currently used <span class="muted">Select all that apply.</span></label>
+<div class="checkbox-grid compact-options" id="dataManagementMeasures">
+<label><input type="checkbox" value="Structured file organisation"/> Structured file organisation</label><label><input type="checkbox" value="Regular backup"/> Regular backup</label><label><input type="checkbox" value="Metadata / documentation"/> Metadata / documentation</label><label><input type="checkbox" value="Controlled access / permissions"/> Controlled access / permissions</label><label><input type="checkbox" value="FAIR principles"/> FAIR principles</label><label><input type="checkbox" value="Data / code repositories"/> Data / code repositories</label><label><input type="checkbox" value="Data Management Plan followed"/> Data Management Plan followed</label><label><input class="other-trigger" data-other-target="dataManagementOtherWrap" type="checkbox" value="Other"/> Other</label>
+</div><div class="field inline-other hidden" id="dataManagementOtherWrap"><label>Please specify</label><input data-field="data_management_other" type="text"/></div>
+</div>
+<div class="field"><label id="dataManagementLabel">Anything you would like to improve or strengthen in your research data and/or code management?</label><textarea data-field="data_management_practice" maxlength="2500" placeholder="Optional: describe what still needs attention or what you plan to improve." rows="4"></textarea></div>
+</div>
+<div class="report-block" id="researchOutputsBlock">
+<h3>Publications and other research outputs</h3>
+<p class="lead">Tell us about research outputs you have contributed to since the previous PCDP (or since recruitment, for your first PCDP). The information will help the project management team enter eligible outputs in the European Commission portal.</p>
+<div class="report-group" data-report-group="publications">
+<h4>Scientific publications</h4>
+<p class="field-hint">Have you authored or co-authored a scientific publication during this reporting period? Include first-author and co-author publications. The fields marked * reflect mandatory fields shown in the EU portal screenshot.</p>
+<div class="report-answer"><label><input type="radio" name="hasPublications" value="no" checked/> No</label><label><input type="radio" name="hasPublications" value="yes"/> Yes</label></div>
+<div id="publicationsPanel" class="hidden"><div id="publicationsList"></div><button type="button" class="button secondary" id="addPublication">+ Add publication</button></div>
+</div>
+<div class="report-group" data-report-group="outputs">
+<h4>Datasets, repositories and other research results</h4>
+<p class="field-hint">Have you made a dataset available in a repository, or produced another shareable output (e.g. software, workflow, protocol or prototype)? A repository landing-page URL is mandatory for datasets.</p>
+<div class="report-answer"><label><input type="radio" name="hasOutputs" value="no" checked/> No</label><label><input type="radio" name="hasOutputs" value="yes"/> Yes</label></div>
+<div id="outputsPanel" class="hidden"><div id="outputsList"></div><button type="button" class="button secondary" id="addOutput">+ Add research output</button></div>
+</div>
+</div>
+</section>
+<section class="step" data-step="5" data-title="Transferable skills"><h2>Transferable skills development</h2>
+<p class="lead" id="transferableLead">Assess your transferable competences across ResearchComp areas, then select 1 to 3 learning priorities and define concrete actions for the next six months.</p>
+<div class="assessment-scale"><strong>How to rate your current experience</strong>
+<div class="scale-legend"><span><b>N/A</b> Not applicable</span><span><b>0</b> No experience</span><span><b>1</b> Foundational</span><span><b>2</b> Intermediate</span><span><b>3</b> Advanced</span><span><b>4</b> Expert</span></div>
+<p>Rate yourself honestly. These self-ratings support personal development and training planning; they are not a performance evaluation. Select <strong>0</strong> if the skill is relevant but you have no experience, and <strong>N/A</strong> only if it is not applicable to your development.</p></div>
+<p class="field-hint">Competency names follow the European Commission ResearchComp framework. The short descriptions explain what each competence covers. Research-specific technical competences are addressed elsewhere in this PCDP.</p><div aria-hidden="true" class="assessment-key-row"><span>Competence and explanation</span><span>Current level</span><span>Learning priority</span></div>
+<div class="assessment-list" id="transferableContainer"></div>
+<p aria-live="polite" class="priority-counter" id="transferablePriorityCount">0 of 3 learning priorities selected. Select at least one.</p>
+<p class="message error hidden" id="transferableValidation" role="alert"></p></section>
+<section class="step" data-step="6" data-title="Career objectives">
+<h2>Long-term career objectives</h2>
+<div class="field">
+<label>Which options currently interest you? <span class="muted">Select all that apply.</span></label>
+<div class="checkbox-grid" id="careerOptions">
+<label><input type="checkbox" value="Academic research"/> Academic research</label><label><input type="checkbox" value="Industry / biotech / pharma"/> Industry / biotech / pharma</label><label><input type="checkbox" value="Research support / infrastructure"/> Research support / infrastructure</label><label><input type="checkbox" value="Science policy / funding / research management"/> Science policy / funding / research management</label><label><input type="checkbox" value="Entrepreneurship / innovation"/> Entrepreneurship / innovation</label><label><input type="checkbox" value="Science communication / engagement"/> Science communication / engagement</label><label><input type="checkbox" value="Several options / still exploring"/> Several options / still exploring</label><label><input class="other-trigger" data-other-target="careerOtherWrap" type="checkbox" value="Other"/> Other</label>
+</div><div class="field inline-other hidden" id="careerOtherWrap"><label>Please specify another career direction</label><input data-field="career_other" type="text"/></div>
+</div>
+<div class="field update-only hidden" id="careerChangeField"><label>How has your career thinking changed since your previous PCDP?</label><select data-field="career_change_status"><option value="">Select</option><option>No major change</option><option>My interests are becoming clearer</option><option>I am considering new options</option><option>I am less certain than before</option><option>I have changed direction</option></select></div>
+<div class="field"><label id="careerGoalsLabel">What are your longer-term career goals or options you would like to explore?</label><textarea data-field="career_goals" maxlength="3500" required="" rows="5"></textarea></div>
+<div class="field"><label id="careerTrainingLabel">What types of experience or exposure would help you explore or progress towards these goals? <span class="muted">Select all that apply.</span></label>
+<div class="checkbox-grid compact-options" id="careerExperienceTypes"><label><input type="checkbox" value="Course / workshop"/> Course / workshop</label><label><input type="checkbox" value="Mentoring / career conversation"/> Mentoring / career conversation</label><label><input type="checkbox" value="Networking"/> Networking</label><label><input type="checkbox" value="Industry / non-academic exposure"/> Industry / non-academic exposure</label><label><input type="checkbox" value="Teaching / mentoring experience"/> Teaching / mentoring experience</label><label><input type="checkbox" value="Secondment"/> Secondment</label><label><input type="checkbox" value="Entrepreneurship / innovation activity"/> Entrepreneurship / innovation activity</label><label><input class="other-trigger" data-other-target="careerExperienceOtherWrap" type="checkbox" value="Other"/> Other</label></div>
+<div class="field inline-other hidden" id="careerExperienceOtherWrap"><label>Please specify</label><input data-field="career_experience_other" type="text"/></div></div>
+
+</section>
+<section class="step" data-step="7" data-title="Development activities">
+<h2>Training and professional development</h2>
+<p class="lead" id="activitiesLead">Add completed or planned activities that support your development.</p>
+<div class="subsection recommendation-section"><div class="recommendation-head"><div><h3>Suggested free training</h3><p class="muted">Optional recommendations based on your selected priorities. Availability may change; links were last verified in October 2026.</p></div><button class="button ghost small" id="refreshRecommendations" type="button">Refresh suggestions</button></div><div class="recommendation-grid" id="trainingRecommendations"></div></div>
+<div id="activitiesContainer"></div>
+<button class="button secondary" id="addActivity" type="button">+ Add activity</button>
+
+
+</section>
+<section class="step" data-step="8" data-title="Secondment">
+<h2>Planned secondments</h2>
+<fieldset class="choice-grid compact">
+<legend id="secondmentLegend">Do you already have a planned secondment?</legend>
+<label class="choice-card"><input name="hasSecondment" type="radio" value="yes"/> <span><strong>Yes</strong></span></label>
+<label class="choice-card"><input checked="" name="hasSecondment" type="radio" value="no"/> <span><strong>Not yet</strong></span></label>
+</fieldset>
+<div class="hidden" id="secondmentFields">
+<div class="field update-only hidden" id="secondmentStatusField"><label>Current secondment status</label><select data-field="secondment_status"><option value="">Select</option><option>Completed</option><option>Ongoing</option><option>Planned</option><option>Dates changed</option><option>No longer planned</option></select></div>
+<div class="field-grid two"><div class="field"><label>Host institute / organisation</label><input data-field="secondment_host" type="text"/></div><div class="field"><label>Local secondment supervisor</label><input data-field="secondment_supervisor" type="text"/></div></div>
+<div class="field-grid two"><div class="field"><label>Planned start</label><input data-field="secondment_start" placeholder="Month / year or date" type="text"/></div><div class="field"><label>Duration</label><input data-field="secondment_duration" placeholder="e.g. 3 months" type="text"/></div></div>
+<div class="field"><label id="secondmentObjectivesLabel">Objectives and relation to the doctoral project</label><textarea data-field="secondment_objectives" rows="4"></textarea></div>
+<div class="field"><label>Methodologies / research skills to be acquired</label><textarea data-field="secondment_research_skills" rows="4"></textarea></div>
+<div class="field"><label>Transferable skills / professional experience to be acquired</label><textarea data-field="secondment_transferable_skills" rows="4"></textarea></div>
+</div>
+</section>
+<section class="step" data-step="9" data-title="Dissemination and communication">
+<h2>Dissemination and communication</h2>
+<p class="lead">Record conferences, scientific presentations, dissemination and communication activities from this reporting period. You may add several activities. The project management team will determine which entries are eligible for reporting in the European Commission portal.</p>
+<div class="report-group" data-report-group="dissemination">
+<h3>Dissemination activities and scientific conferences</h3>
+<p class="field-hint">Did you attend a conference, give a poster or oral presentation, or carry out another activity to share research results? Conference attendance without presentation can be recorded here for internal monitoring; it is not automatically an EU-reportable dissemination activity.</p>
+<div class="report-answer"><label><input type="radio" name="hasDissemination" value="no" checked/> No</label><label><input type="radio" name="hasDissemination" value="yes"/> Yes</label></div>
+<div id="disseminationPanel" class="hidden"><div id="disseminationList"></div><button type="button" class="button secondary" id="addDissemination">+ Add dissemination / conference activity</button></div>
+</div>
+<div class="report-group" data-report-group="communication">
+<h3>Communication activities</h3>
+<p class="field-hint">Did you contribute to any activity aimed at wider audiences, such as a website article, social media post, outreach event, media interview or public engagement activity? Capture the information required by the EU portal.</p>
+<div class="report-answer"><label><input type="radio" name="hasCommunication" value="no" checked/> No</label><label><input type="radio" name="hasCommunication" value="yes"/> Yes</label></div>
+<div id="communicationPanel" class="hidden"><div id="communicationList"></div><button type="button" class="button secondary" id="addCommunication">+ Add communication activity</button></div>
+</div>
+<div class="report-group" id="supervisorDiscussionNote">
+<h3>Discussion with supervisor(s)</h3>
+<p class="field-hint">The Word PCDP includes a blank section titled <strong>Main points and adjustments agreed with supervisor(s)</strong>. Please complete it together with your supervisor(s) after discussing the plan. You do not need to enter this information in the online form.</p>
+</div>
+<div class="declaration-box">
+<h3>Final confirmation</h3>
+<div class="field"><label>Date of Doctoral Candidate declaration</label><input data-field="candidate_signature_date" type="date"/></div>
+<label class="confirm-check"><input id="finalConfirm" type="checkbox"/> I confirm that the information provided in this PCDP accurately reflects my current research, training and development activities.</label>
+</div>
+<div class="generate-actions"><button class="button primary large" disabled id="generateBtn" type="button">Download PCDP package (.zip)</button></div>
+<p class="helper-text">Your download contains the Word PCDP and a structured JSON backup including publications, other outputs, dissemination and communication records. Keep the JSON for your next review; this is not a submission to the European Commission portal.</p>
+<div class="message" id="generateMessage" role="status"></div>
+</section>
+<div class="nav-row">
+<button class="button ghost" id="backBtn" type="button">Back</button>
+<button class="button primary" id="nextBtn" type="button">Next</button>
+</div>
+</form>
+</main>
+<footer>
+<p>Your PCDP answers are processed in your browser to generate your Word document and JSON backup. The app does not send your PCDP narratives to an external writing service. If you actively register for email reminders, only your email address, network, review date and reminder preference are sent to the reminder service. This tool does not replace discussion with your supervisor(s) or formal doctoral monitoring.</p>
+</footer>
+</div>
+<script src="vendor/jszip.min.js"></script>
+<script src="review-calendar.js"></script>
+<script src="researchcomp.js"></script>
+<script src="portal-reporting.js"></script>
+<script src="app.js"></script>
+<script src="reminders.js"></script>
+</body>
+</html>

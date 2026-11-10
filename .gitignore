@@ -1,0 +1,15 @@
+# Do not upload credentials or local data
+.env
+.env.*
+!.env.example
+*.secret
+secrets*
+credentials*
+*.key
+*.pem
+*.p12
+*.pfx
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
